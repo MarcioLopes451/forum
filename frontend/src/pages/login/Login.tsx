@@ -21,15 +21,13 @@ export default function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("User data:", user); // To verify payload data before sending
-
     axios
       .post(`${api_url}?action=login`, user, {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
         console.log("Login response:", res.data.message);
-        navigate("/dashboard"); // Redirect on successful login
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.error(
